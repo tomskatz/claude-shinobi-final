@@ -9,27 +9,32 @@ Shinobi is a blog application built with Next.js 15, React 19, and Tailwind CSS 
 ## Tech Stack
 
 **Core Frameworks:**
+
 - Next.js 15 with App Router (React Server Components)
 - React 19
 - TypeScript 5
 
 **Styling:**
+
 - Tailwind CSS 4 (using new `@import "tailwindcss"` syntax)
 - Custom CSS variables for theming
 - Lucide React for icons
 
 **Data & Security:**
+
 - GraphQL for CMS data fetching (optional)
 - Mock data support for testing without CMS
 - DOMPurify + JSDOM for HTML sanitization
 - Hygraph (GraphCMS) as headless CMS (optional)
 
 **Testing:**
+
 - Vitest as test runner
 - React Testing Library for component testing
 - jsdom for DOM simulation
 
 **Build Tools:**
+
 - Turbopack (Next.js development mode)
 - TypeScript compiler
 
@@ -56,6 +61,7 @@ src/
 │           ├── Button.tsx
 │           └── Button.test.tsx
 │
+|── hooks/                  #reusable hooks
 ├── lib/                     # Utilities and shared code
 │   ├── queries.ts          # GraphQL query definitions
 │   ├── mockData.ts         # Mock blog posts for testing without CMS
@@ -100,11 +106,13 @@ npm test:ui
 ### Data Flow
 
 **Current Setup (Mock Data):**
+
 - Blog posts are loaded from `src/lib/mockData.ts` for testing without a CMS connection
 - Mock data includes 4 sample blog posts with realistic content
 - Perfect for development and testing without external dependencies
 
 **Optional Hygraph Integration:**
+
 - Blog posts can be fetched from Hygraph CMS via GraphQL queries (see `src/lib/queries.ts`)
 - All data fetching happens server-side in Next.js Server Components using the `fetch` API
 - Content is cached with ISR (Incremental Static Regeneration) using `next: { revalidate: 3600 }` (1 hour)
@@ -114,15 +122,18 @@ npm test:ui
 ### Key Patterns
 
 **Environment Variables:**
+
 - `HYGRAPH_ENDPOINT` - Optional. Only required if switching from mock data to Hygraph CMS integration. Must be set in `.env.local` or deployment environment if using Hygraph.
 
 **GraphQL Integration:**
+
 - Queries defined in `src/lib/queries.ts` as raw GraphQL strings
 - `GET_BLOG_POSTS` - Fetches all blog posts for listing page
 - `GET_SINGLE_POST` - Fetches individual post by slug
 - Error handling checks both HTTP response status and GraphQL errors in the response
 
 **HTML Sanitization:**
+
 - Blog content HTML is sanitized in `src/lib/sanitize.ts` before rendering
 - Uses DOMPurify with JSDOM window instance
 - Allows specific tags (p, strong, em, h1-h6, ul, ol, li, a, img, blockquote, code, pre, etc.)
@@ -130,6 +141,7 @@ npm test:ui
 - Explicitly disallows data attributes and unknown protocols for security
 
 **Routing:**
+
 - `/` - Home page with hero and navigation
 - `/blog` - Blog listing page with all posts
 - `/blog/[slug]` - Individual blog post page
@@ -164,3 +176,4 @@ The app uses a custom CSS variables-based theming system with dark mode support:
 - Async/await for data fetching in Server Components
 - Error boundaries via Next.js error handling and `notFound()` function
 - Component files use PascalCase, utility files use camelCase
+- When creating a new page component, always add a link to that page in the header (`src/app/layout.tsx`)
