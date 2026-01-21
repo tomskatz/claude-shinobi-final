@@ -1,34 +1,14 @@
 import { sanitizeHTML } from '@/lib/sanitize'
-import { GET_SINGLE_POST } from '@/lib/queries'
 import { BlogPost } from '@/lib/types'
+import { mockBlogPosts } from '@/lib/mockData'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import styles from './BlogPost.module.css'
 
 async function getSinglePost(slug: string): Promise<BlogPost | null> {
-  const response = await fetch(process.env.HYGRAPH_ENDPOINT!, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: GET_SINGLE_POST,
-      variables: { slug }
-    }),
-    next: { revalidate: 3600 }
-  })
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch post: ${response.status}`)
-  }
-
-  const json = await response.json()
-  
-  if (json.errors) {
-    throw new Error(`GraphQL errors: ${JSON.stringify(json.errors)}`)
-  }
-
-  return json.data.blogPost
+  // Using mock data for testing without CMS
+  const post = mockBlogPosts.find(p => p.blogPostSlug === slug)
+  return post || null
 }
 
 export default async function BlogPostPage({ 

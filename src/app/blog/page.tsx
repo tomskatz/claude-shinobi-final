@@ -1,31 +1,11 @@
-import { GET_BLOG_POSTS } from '@/lib/queries'
 import { BlogPost } from '@/lib/types'
+import { mockBlogPosts } from '@/lib/mockData'
 import Link from 'next/link'
 import BlogSidebar from '@/components/BlogSidebar'
 
 async function getPosts(): Promise<BlogPost[]> {
-  const response = await fetch(process.env.HYGRAPH_ENDPOINT!, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: GET_BLOG_POSTS,
-    }),
-    next: { revalidate: 3600 }
-  })
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch posts: ${response.status}`)
-  }
-
-  const json = await response.json()
-  
-  if (json.errors) {
-    throw new Error(`GraphQL errors: ${JSON.stringify(json.errors)}`)
-  }
-
-  return json.data.blogPosts
+  // Using mock data for testing without CMS
+  return mockBlogPosts
 }
 
 function getPreviewText(html: string, maxLength: number = 100): string {
