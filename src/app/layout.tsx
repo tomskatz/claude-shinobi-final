@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
 import DarkModeToggle from "@/components/DarkModeToggle";
+// import { AuthButton } from "@/components/auth/AuthButton"; // Disabled until Supabase is configured
 
 export const metadata: Metadata = {
   title: "Shinobi",
@@ -33,7 +34,10 @@ export default function RootLayout({
               </Link>
             </nav>
           </div>
-          <DarkModeToggle />
+          <div className="flex items-center gap-4">
+            {/* <AuthButton /> */} {/* Disabled until Supabase is configured */}
+            <DarkModeToggle />
+          </div>
         </header>
         {children}
       </body>

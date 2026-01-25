@@ -4,6 +4,8 @@ import { mockBlogPosts } from '@/lib/mockData'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import styles from './BlogPost.module.css'
+import Avatar from '@/components/ui/Avatar/Avatar'
+// import { CommentSection } from '@/components/comments/CommentSection' // Disabled until Supabase is configured
 
 async function getSinglePost(slug: string): Promise<BlogPost | null> {
   // Using mock data for testing without CMS
@@ -29,17 +31,25 @@ export default async function BlogPostPage({
           <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-gray-100">
             {post.blogTitle}
           </h1>
-          <div className="text-lg text-gray-600 dark:text-gray-400">
-            By {post.createdBy.name} • {new Date(post.createdAt).toLocaleDateString()}
+          <div className="flex items-center gap-3 text-lg text-gray-600 dark:text-gray-400">
+            <Avatar name={post.createdBy.name} size="md" />
+            <div>
+              <div>By {post.createdBy.name}</div>
+              <div>{new Date(post.createdAt).toLocaleDateString()}</div>
+            </div>
           </div>
         </header>
         
-        <div 
+        <div
           className={styles.blogContent}
           dangerouslySetInnerHTML={{ __html: sanitizeHTML(post.blogPostContent.html) }}
         />
       </article>
-      
+
+      {/* Comment Section - Disabled until Supabase is configured
+          Follow COMMENT_SYSTEM_SETUP.md to enable comments */}
+      {/* <CommentSection postSlug={post.blogPostSlug} /> */}
+
       <div className="mt-12 pt-8 border-t border-border">
         <Link 
           href="/blog" 
