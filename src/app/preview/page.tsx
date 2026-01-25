@@ -1,5 +1,6 @@
 "use client";
 import Button from "@/components/ui/Button/Button";
+import Badge from "@/components/ui/Badge/Badge";
 
 export default function Preview() {
   return (
@@ -97,6 +98,47 @@ export default function Preview() {
           Delete Account
         </Button>
       </div>
+      </section>
+
+      <section style={{ marginTop: '3rem' }}>
+        <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Badge Components</h2>
+        <p style={{ marginBottom: '1.5rem', maxWidth: '500px' }}>
+          Badges are used to highlight status, labels, or categories. They come in multiple variants and sizes.
+        </p>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Variants</h3>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+          <Badge variant="primary">Primary</Badge>
+          <Badge variant="secondary">Secondary</Badge>
+          <Badge variant="success">Success</Badge>
+          <Badge variant="warning">Warning</Badge>
+          <Badge variant="danger">Danger</Badge>
+        </div>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Sizes</h3>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', marginBottom: '2rem' }}>
+          <Badge size="sm" variant="primary">Small</Badge>
+          <Badge size="md" variant="primary">Medium</Badge>
+          <Badge size="lg" variant="primary">Large</Badge>
+        </div>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Disabled States</h3>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+          <Badge variant="primary" disabled>Primary</Badge>
+          <Badge variant="secondary" disabled>Secondary</Badge>
+          <Badge variant="success" disabled>Success</Badge>
+          <Badge variant="warning" disabled>Warning</Badge>
+          <Badge variant="danger" disabled>Danger</Badge>
+        </div>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Practical Examples</h3>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Badge variant="success">Active</Badge>
+          <Badge variant="warning">Pending</Badge>
+          <Badge variant="danger">Expired</Badge>
+          <Badge variant="primary">New</Badge>
+          <Badge variant="secondary">Draft</Badge>
+        </div>
       </section>
 
       <section style={{ marginTop: '3rem' }}>
