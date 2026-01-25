@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/ui/Button/Button";
 import Badge from "@/components/ui/Badge/Badge";
+import Card from "@/components/ui/Card/Card";
 
 export default function Preview() {
   return (
@@ -138,6 +139,74 @@ export default function Preview() {
           <Badge variant="danger">Expired</Badge>
           <Badge variant="primary">New</Badge>
           <Badge variant="secondary">Draft</Badge>
+        </div>
+      </section>
+
+      <section style={{ marginTop: '3rem' }}>
+        <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Card Components</h2>
+        <p style={{ marginBottom: '1.5rem', maxWidth: '500px' }}>
+          Cards are used to group related content. They come in multiple variants and sizes.
+        </p>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Variants</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+          <Card variant="primary" title="Primary Card">
+            This is a primary card with some content.
+          </Card>
+          <Card variant="secondary" title="Secondary Card">
+            This is a secondary card with some content.
+          </Card>
+          <Card variant="success" title="Success Card">
+            This is a success card with some content.
+          </Card>
+          <Card variant="warning" title="Warning Card">
+            This is a warning card with some content.
+          </Card>
+          <Card variant="danger" title="Danger Card">
+            This is a danger card with some content.
+          </Card>
+        </div>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Sizes</h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem', maxWidth: '400px' }}>
+          <Card size="sm" variant="primary" title="Small Card">
+            Compact content area.
+          </Card>
+          <Card size="md" variant="primary" title="Medium Card">
+            Standard content area with more room.
+          </Card>
+          <Card size="lg" variant="primary" title="Large Card">
+            Spacious content area for detailed information.
+          </Card>
+        </div>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>With Title and Subtitle</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+          <Card variant="primary" title="Featured Article" subtitle="Published on Jan 25, 2026">
+            A detailed article about modern web development practices and best patterns.
+          </Card>
+          <Card variant="success" title="Payment Successful" subtitle="Transaction ID: #12345">
+            Your payment has been processed successfully.
+          </Card>
+        </div>
+
+        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Disabled States</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+          <Card variant="primary" disabled title="Disabled Primary">
+            This card is disabled.
+          </Card>
+          <Card variant="secondary" disabled title="Disabled Secondary">
+            This card is disabled.
+          </Card>
+          <Card variant="success" disabled title="Disabled Success">
+            This card is disabled.
+          </Card>
+          <Card variant="warning" disabled title="Disabled Warning">
+            This card is disabled.
+          </Card>
+          <Card variant="danger" disabled title="Disabled Danger">
+            This card is disabled.
+          </Card>
         </div>
       </section>
 
