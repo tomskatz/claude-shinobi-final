@@ -12,10 +12,11 @@ Parse $ARGUMENTS to get the following values:
 
 ## Task
 
-Make a single UI component following these guidelines:
+Make a UI component according to the [name] and [summary] provided, following these guidelines:
 
-- Create the component file in `src/components/ui/`
-- Use a functional component with the name in PascalCase
+- Create the component file in `src/components/ui/[name]/[name].tsx`
+- Use a functional component with the name [name]
+- Reference the [summary] when making the component
 
 ## Variants
 
